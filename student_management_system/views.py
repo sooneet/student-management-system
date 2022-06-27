@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from app.EmailBackEnd import EmailBackEnd
 from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
 
 def base(request):
     return render(request,'base.html')
@@ -21,5 +22,6 @@ def doLogin(request):
             elif user_type == '3':
                 return HttpResponse('STUDENT')   
             else:
+                messages.error(request,'Email or Passsword Invalid')
                 return redirect('doLogin')                                 
     return render(request,'login.html')    

@@ -11,4 +11,7 @@ urlpatterns = [
     path('base/', views.base,name='base'),
 
     path('', views.doLogin,name='doLogin'),
+
+    path('hod/home', hod_views.home,name='home'),
+
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
