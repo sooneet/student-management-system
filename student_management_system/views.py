@@ -16,7 +16,7 @@ def doLogin(request):
             login(request,user)
             user_type = user.user_type
             if user_type == '1':
-                return HttpResponse('HOD')
+                return redirect('hod_home')
             elif user_type == '2':
                 return HttpResponse('STAFF')
             elif user_type == '3':
@@ -25,3 +25,8 @@ def doLogin(request):
                 messages.error(request,'Email or Passsword Invalid')
                 return redirect('doLogin')                                 
     return render(request,'login.html')    
+
+
+def doLogout(request):
+    logout(request)
+    return redirect('doLogin')
